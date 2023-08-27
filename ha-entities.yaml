@@ -1,0 +1,28 @@
+mqtt:
+  sensor:
+    - name: "Fanbuddy Temperature"
+      unique_id: "Fanbuddy_Temperature"
+      device_class: "temperature"
+      state_topic: "FanBuddy/htu21/temperature"
+      unit_of_measurement: "°C"
+      value_template: "{{ value | round(2) }}"
+
+    - name: "Fanbuddy Humidity"
+      unique_id: "Fanbuddy_Humidity"
+      device_class: "humidity"
+      state_topic: "FanBuddy/htu21/humidity"
+      unit_of_measurement: "%"
+      value_template: "{{ value | round(2) }}"
+
+  switch:
+    - name: "Fanbuddy Fan Switch"
+      unique_id: "Fanbuddy_Fan_Switch"
+      state_topic: "FanBuddy/fan/state"
+      command_topic: "FanBuddy/control/fan"
+      payload_on: "turnFanOn"
+      payload_off: "turnFanOff"
+      state_on: "ON"
+      state_off: "OFF"
+      optimistic: false
+      qos: 0
+      retain: true
